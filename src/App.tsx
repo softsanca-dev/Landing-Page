@@ -3,7 +3,6 @@ import HeroSection from "./sections/HeroSection";
 import ServicesSection from "./sections/ServicesSection";
 import ProcessSection from "./sections/ProcessSection";
 import PriceSection from "./sections/PriceSection";
-import WhyChooseUsSection from "./sections/WhyChooseUsSection";
 import ContactSection from "./sections/ContactSection";
 import Footer from "./sections/Footer";
 
@@ -15,7 +14,6 @@ function App() {
       <ServicesSection />
       <ProcessSection />
       <PriceSection />
-      <WhyChooseUsSection />
       <ContactSection />
       <Footer />
     </>

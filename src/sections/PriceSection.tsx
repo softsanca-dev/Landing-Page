@@ -1,4 +1,6 @@
-import { Check, Clock, Plus, ShieldCheck } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Check, Clock, Plus, ShieldCheck, ChevronDown } from "lucide-react";
 
 const plans = [
   {
@@ -64,33 +66,57 @@ const extraItems = [
 ];
 
 function PriceSection() {
+  const [openExtra, setOpenExtra] = useState<number | null>(0);
+
   return (
-    <section className="relative overflow-hidden bg-white px-6 py-16 text-slate-950 md:py-20">
+    <section
+      id="cotizacion"
+      className="scroll-mt-24 relative overflow-hidden bg-white px-4 py-16 text-slate-950 sm:px-6 md:py-20 lg:px-10"
+    >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.055),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(79,70,229,0.055),transparent_32%)]" />
+      <div className="absolute left-[-180px] top-[-180px] h-[420px] w-[420px] rounded-full bg-blue-500/[0.04] blur-[120px]" />
+      <div className="absolute bottom-[-220px] right-[-180px] h-[520px] w-[520px] rounded-full bg-indigo-500/[0.04] blur-[140px]" />
 
-<div className="container relative mx-auto w-full">
-          <div className="mx-auto mb-12 max-w-3xl text-center">
-          <span className="mb-4 inline-flex rounded-full border border-blue-500/15 bg-blue-500/5 px-5 py-2 text-[11px] font-black uppercase tracking-[0.32em] text-blue-500">
-            Cotización
-          </span>
-
+      <div className="relative mx-auto w-full max-w-[1600px]">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="mx-auto mb-14 max-w-3xl text-center"
+        >
           <h2 className="text-4xl font-black tracking-tight text-slate-950 md:text-5xl">
             Precios base para iniciar tu proyecto
           </h2>
+        </motion.div>
 
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-600 md:text-base">
-            Estos valores sirven como guía inicial. La cotización final depende
-            del alcance, funcionalidades, complejidad y tiempo requerido.
-          </p>
-        </div>
-
-        <div className="grid gap-6 lg:grid-cols-3">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.14 } },
+          }}
+          className="grid gap-6 lg:grid-cols-3"
+        >
           {plans.map((plan) => (
-            <article
+            <motion.article
               key={plan.name}
-              className="group relative flex min-h-[500px] flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-7 shadow-[0_18px_50px_rgba(15,23,42,0.06)] transition-all duration-500 hover:-translate-y-2 hover:border-blue-500/25 hover:shadow-[0_26px_75px_rgba(37,99,235,0.12)] md:p-8"
+              variants={{
+                hidden: { opacity: 0, y: 40, scale: 0.96, filter: "blur(8px)" },
+                show: {
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  filter: "blur(0px)",
+                  transition: { duration: 0.65, ease: "easeOut" },
+                },
+              }}
+              className="group relative flex min-h-[540px] flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-7 shadow-[0_18px_50px_rgba(15,23,42,0.06)] transition-all duration-500 hover:-translate-y-2 hover:border-blue-500/25 hover:shadow-[0_26px_75px_rgba(37,99,235,0.12)] md:p-8"
             >
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.09),transparent_42%)] opacity-0 transition duration-500 group-hover:opacity-100" />
+              <div className="absolute right-0 top-0 h-32 w-32 translate-x-12 -translate-y-12 rounded-full bg-blue-500/10 blur-3xl transition duration-500 group-hover:bg-blue-500/20" />
 
               <div className="relative flex flex-1 flex-col">
                 <h3 className="text-3xl font-black leading-tight text-slate-950">
@@ -101,7 +127,10 @@ function PriceSection() {
                   {plan.description}
                 </p>
 
-                <div className="mt-7 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  className="mt-7 rounded-[1.7rem] border border-slate-200 bg-slate-50 p-5 transition duration-300"
+                >
                   <div className="flex items-start gap-2">
                     <span className="mt-[7px] text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">
                       COP
@@ -115,13 +144,17 @@ function PriceSection() {
                   <p className="mt-2 pl-[44px] text-sm font-semibold text-slate-500">
                     {plan.priceNote}
                   </p>
-                </div>
+                </motion.div>
 
                 <div className="mt-7 h-px w-full bg-slate-200" />
 
                 <div className="mt-7 flex-1 space-y-4">
                   {plan.features.map((feature) => (
-                    <div key={feature} className="flex items-start gap-3">
+                    <motion.div
+                      whileHover={{ x: 4 }}
+                      key={feature}
+                      className="flex items-start gap-3"
+                    >
                       <div className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-500/10">
                         <Check size={13} className="text-blue-500" />
                       </div>
@@ -129,27 +162,105 @@ function PriceSection() {
                       <span className="text-sm leading-6 text-slate-600">
                         {feature}
                       </span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
 
                 <div className="mt-8 h-[4px] w-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-500 group-hover:w-24" />
               </div>
-            </article>
+            </motion.article>
           ))}
+        </motion.div>
+
+        {/* MOBILE ACCORDION */}
+        <div className="mt-7 grid gap-4 md:hidden">
+          {extraItems.map((item, index) => {
+            const Icon = item.icon;
+            const isOpen = openExtra === index;
+
+            return (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-[0_12px_35px_rgba(15,23,42,0.05)]"
+              >
+                <button
+                  type="button"
+                  onClick={() => setOpenExtra(isOpen ? null : index)}
+                  className="flex w-full items-center justify-between gap-4 p-5 text-left"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-500/10">
+                      <Icon className="text-blue-500" size={24} />
+                    </div>
+
+                    <h3 className="text-base font-black text-slate-950">
+                      {item.title}
+                    </h3>
+                  </div>
+
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="shrink-0 text-blue-500"
+                  >
+                    <ChevronDown size={22} />
+                  </motion.div>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                    >
+                      <p className="px-5 pb-5 text-sm leading-7 text-slate-600">
+                        {item.description}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </div>
 
-        <div className="mt-7 grid gap-6 md:grid-cols-3">
+        {/* DESKTOP EXTRA CARDS */}
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.12 } },
+          }}
+          className="mt-7 hidden gap-6 md:grid md:grid-cols-3"
+        >
           {extraItems.map((item) => {
             const Icon = item.icon;
 
             return (
-              <div
+              <motion.div
                 key={item.title}
-                className="rounded-[1.6rem] border border-slate-200 bg-white p-6 shadow-[0_14px_40px_rgba(15,23,42,0.05)] transition duration-300 hover:-translate-y-1 hover:border-blue-500/20"
+                variants={{
+                  hidden: { opacity: 0, y: 28, filter: "blur(8px)" },
+                  show: {
+                    opacity: 1,
+                    y: 0,
+                    filter: "blur(0px)",
+                    transition: { duration: 0.55, ease: "easeOut" },
+                  },
+                }}
+                whileHover={{ y: -5 }}
+                className="group rounded-[1.7rem] border border-slate-200 bg-white p-6 shadow-[0_14px_40px_rgba(15,23,42,0.05)] transition duration-300 hover:border-blue-500/20"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10">
-                  <Icon className="text-blue-500" size={24} />
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500/10 transition duration-300 group-hover:scale-105">
+                  <Icon className="text-blue-500" size={25} />
                 </div>
 
                 <h3 className="text-lg font-black text-slate-950">
@@ -159,19 +270,10 @@ function PriceSection() {
                 <p className="mt-3 text-sm leading-7 text-slate-600">
                   {item.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
-
-        <div className="mx-auto mt-12 max-w-3xl text-center">
-          <div className="mx-auto mb-5 h-[4px] w-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-500" />
-
-          <p className="text-sm leading-7 text-slate-600 md:text-base">
-            Cada proyecto es único. Primero entendemos tu necesidad, luego
-            definimos alcance, funcionalidades y una cotización clara.
-          </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
