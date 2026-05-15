@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, Globe, MapPin, ArrowUpRight } from "lucide-react";
 
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.webp";
 
 const contactItems = [
   {
@@ -113,6 +113,8 @@ function Footer() {
             <div className="flex flex-col items-center text-center md:items-end md:text-right lg:items-end">
               <img
                 src={logo}
+                loading="lazy"
+                decoding="async"
                 alt="Soft SanCa IT"
                 className="w-[170px] object-contain drop-shadow-[0_0_24px_rgba(37,99,235,0.14)] sm:w-[200px] lg:w-[230px]"
               />

@@ -1,5 +1,5 @@
-import logoImg from '../assets/logoCompleto.png';
-import logoMobile from '../assets/logoCompletoMobile.png';
+import logoImg from '../assets/logoCompleto.webp'
+import logoMobile from '../assets/logoCompletoMobile.webp'
 
 const HeroSection = () => {
   return (
@@ -120,6 +120,9 @@ const HeroSection = () => {
             <img
               src={logoMobile}
               alt="Soft SanCa IT Logo Mobile"
+              loading="eager"
+              decoding="async" 
+              fetchPriority="high"
               className="w-full h-auto drop-shadow-[0_0_40px_rgba(59,130,246,0.35)] brightness-110"
             />
 

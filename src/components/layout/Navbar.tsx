@@ -8,7 +8,7 @@ import {
   MessageCircle,
   ArrowUpRight,
 } from "lucide-react";
-import logoImg from "../../assets/logolargo.png";
+import logoImg from "../../assets/logolargo.webp";
 
 const sections = ["inicio", "servicios", "proceso", "cotizacion", "contacto"];
 
@@ -109,6 +109,8 @@ const Navbar = () => {
           <div className="flex w-[140px] items-center sm:w-[170px] lg:w-[180px]">
             <img
               src={logoImg}
+              loading="lazy"
+              decoding="async"
               alt="Soft SanCa IT"
               className="h-auto w-full object-contain"
             />
