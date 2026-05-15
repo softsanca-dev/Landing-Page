@@ -1,7 +1,11 @@
 import emailjs from '@emailjs/browser';
-import React from 'react';
+import { useState } from "react";
+
 
 const ContactSection = () => {
+
+  const [openInfo, setOpenInfo] = useState(false);
+  const [mobileStep, setMobileStep] = useState(1);
 
   const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -38,12 +42,11 @@ const ContactSection = () => {
     alert('Error al enviar');
 
   }
-};
-
+}; 
   return (
   <section
     id="contacto"
-    className="scroll-mt-21 relative w-full bg-black py-16 overflow-hidden"
+    className="scroll-mt-17 sm:scroll-mt-21 relative w-full bg-black py-16 overflow-hidden"
   >
 
     {/* GLOW */}
@@ -63,6 +66,35 @@ const ContactSection = () => {
 
           <div className="relative z-10">
 
+            <div className="sm:hidden">
+
+              <button
+                onClick={() => setOpenInfo(!openInfo)}
+                className="w-full flex justify-center items-center pb-2"
+              >
+                <div
+                  className={`transition-transform duration-300 ${
+                    openInfo ? "rotate-180" : ""
+                  }`}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-7 h-7 text-blue-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2.5}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </button>
+
+            </div>    
             {/* MINI TITLE */}
             <div className="flex items-center gap-3 mb-6">
 
@@ -76,65 +108,139 @@ const ContactSection = () => {
               </span> 
             </h2>
 
-            {/* TEXTO */}
-            <p className="text-slate-300 text-sm sm:text-[15px] leading-relaxed pt-8 sm:pt-10 max-w-md">
-              Comunicate con nosotros para materializar tus futuros proyectos estamos listos para ayudarte a llevar tu empresa al siguiente nivel.
-            </p>
+            {/* MOBILE TOGGLE */}
+            <div className="sm:hidden mt-6">
 
-            {/* BENEFICIOS */}
-            <div className="flex flex-col gap-4 mt-8">
+              
 
-              <div className="flex items-start gap-3">
+              {/* CONTENIDO MOBILE */}
+              <div
+                className={`overflow-hidden transition-all duration-500 ${
+                  openInfo ? "max-h-[900px] opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
 
-                <span className="text-blue-500 text-lg">✓</span>
-
-                <p className="text-white font-semibold text-sm">
-                  Respuesta rápida y asesoría personalizada.
+                {/* TEXTO */}
+                <p className="text-slate-300 text-sm leading-relaxed pt-5 max-w-md">
+                  Comunicate con nosotros para materializar tus futuros proyectos estamos listos para ayudarte a llevar tu empresa al siguiente nivel.
                 </p>
+
+                {/* BENEFICIOS */}
+                <div className="flex flex-col gap-4 mt-8">
+
+                  <div className="flex items-start gap-3">
+                    <span className="text-blue-500 text-lg">✓</span>
+                    <p className="text-white font-semibold text-sm">
+                      Respuesta rápida y asesoría personalizada.
+                    </p>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <span className="text-blue-500 text-lg">✓</span>
+                    <p className="text-white font-semibold text-sm">
+                      Cotización clara y sin costos ocultos.
+                    </p>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <span className="text-blue-500 text-lg">✓</span>
+                    <p className="text-white font-semibold text-sm">
+                      Atención remota para toda Colombia y el mundo.
+                    </p>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <span className="text-blue-500 text-lg">✓</span>
+                    <p className="text-white font-semibold text-sm">
+                      Seguimiento y acompañamiento del desarrollo.
+                    </p>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <span className="text-blue-500 text-lg">✓</span>
+                    <p className="text-white font-semibold text-sm">
+                      Requerimientos claros y estructurales.
+                    </p>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <span className="text-blue-500 text-lg">✓</span>
+                    <p className="text-white font-semibold text-sm">
+                      Desarrollo sostenible.
+                    </p>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <span className="text-blue-500 text-lg">✓</span>
+                    <p className="text-white font-semibold text-sm">
+                      Soporte 24/7.
+                    </p>
+                  </div>
+
+                </div>
               </div>
+            </div>
 
-              <div className="flex items-start gap-3">
+            {/* DESKTOP NORMAL */}
+            <div className="hidden sm:block">
 
-                <span className="text-blue-500 text-lg">✓</span>
+              {/* TEXTO */}
+              <p className="text-slate-300 text-sm sm:text-[15px] leading-relaxed pt-8 sm:pt-10 max-w-md">
+                Comunicate con nosotros para materializar tus futuros proyectos estamos listos para ayudarte a llevar tu empresa al siguiente nivel.
+              </p>
 
-                <p className="text-white font-semibold text-sm">
-                  Cotización clara y sin costos ocultos.
-                </p>
-              </div>
+              {/* BENEFICIOS */}
+              <div className="flex flex-col gap-4 mt-8">
 
-              <div className="flex items-start gap-3">
-                <span className="text-blue-500 text-lg">✓</span>
-                <p className="text-white font-semibold text-sm">
-                  Atención remota para toda Colombia y el mundo.
-                </p>
-              </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-blue-500 text-lg">✓</span>
+                  <p className="text-white font-semibold text-sm">
+                    Respuesta rápida y asesoría personalizada.
+                  </p>
+                </div>
 
-              <div className="flex items-start gap-3">
-                <span className="text-blue-500 text-lg">✓</span>
-                <p className="text-white font-semibold text-sm">
-                  Seguimiento y acompañamiento del desarrollo.
-                </p>
-              </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-blue-500 text-lg">✓</span>
+                  <p className="text-white font-semibold text-sm">
+                    Cotización clara y sin costos ocultos.
+                  </p>
+                </div>
 
-              <div className="flex items-start gap-3">
-                <span className="text-blue-500 text-lg">✓</span>
-                <p className="text-white font-semibold text-sm">
-                  Requerimientos claros y estructurales.
-                </p>
-              </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-blue-500 text-lg">✓</span>
+                  <p className="text-white font-semibold text-sm">
+                    Atención remota para toda Colombia y el mundo.
+                  </p>
+                </div>
 
-              <div className="flex items-start gap-3">
-                <span className="text-blue-500 text-lg">✓</span>
-                <p className="text-white font-semibold text-sm">
-                  Desarrollo sostenible.
-                </p>
-              </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-blue-500 text-lg">✓</span>
+                  <p className="text-white font-semibold text-sm">
+                    Seguimiento y acompañamiento del desarrollo.
+                  </p>
+                </div>
 
-              <div className="flex items-start gap-3">
-                <span className="text-blue-500 text-lg">✓</span>
-                <p className="text-white font-semibold text-sm">
-                  Soporte 24/7.
-                </p>
+                <div className="flex items-start gap-3">
+                  <span className="text-blue-500 text-lg">✓</span>
+                  <p className="text-white font-semibold text-sm">
+                    Requerimientos claros y estructurales.
+                  </p>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="text-blue-500 text-lg">✓</span>
+                  <p className="text-white font-semibold text-sm">
+                    Desarrollo sostenible.
+                  </p>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="text-blue-500 text-lg">✓</span>
+                  <p className="text-white font-semibold text-sm">
+                    Soporte 24/7.
+                  </p>
+                </div>
+
               </div>
             </div>
           </div>
@@ -160,6 +266,13 @@ const ContactSection = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
 
+              {/* MOBILE STEP 1 */}
+              <div
+                className={`contents sm:contents transition-all duration-500 ${
+                  mobileStep === 1 ? "block" : "hidden sm:contents"
+                }`}
+              >
+
               {/* Nombre */}
               <div className="flex flex-col gap-1">
 
@@ -170,21 +283,6 @@ const ContactSection = () => {
                 <input
                   type="text"
                   name="nombre"
-                  required
-                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-[13px] text-slate-700 bg-[#f8fafc] focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100 transition"
-                />
-              </div>
-
-              {/* ENFOQUE */}
-              <div className="flex flex-col gap-1">
-
-                <label className="text-slate-700 text-[13px] font-semibold">
-                  ¿Cuál es el enfoque de tu empresa?
-                </label>
-
-                <input
-                  type="text"
-                  name="enfoque_empresa"
                   required
                   className="w-full border border-slate-200 rounded-xl px-4 py-3 text-[13px] text-slate-700 bg-[#f8fafc] focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100 transition"
                 />
@@ -201,6 +299,12 @@ const ContactSection = () => {
                   type="tel"
                   name="whatsapp"
                   required
+                  maxLength={10}
+                  pattern="[0-9]{10}"
+                  inputMode="numeric"
+                  onInput={(e) => {
+                    e.currentTarget.value = e.currentTarget.value.replace(/\D/g, '');
+                  }}         
                   className="w-full border border-slate-200 rounded-xl px-4 py-3 text-[13px] text-slate-700 bg-[#f8fafc] focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100 transition"
                 />
               </div>
@@ -219,6 +323,56 @@ const ContactSection = () => {
                   className="w-full border border-slate-200 rounded-xl px-4 py-3 text-[13px] text-slate-700 bg-[#f8fafc] focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100 transition"
                 />
               </div>
+            </div>
+
+              {/* BOTON SIGUIENTE MOBILE */}
+              {mobileStep === 1 && (
+                <div className="sm:hidden mt-6">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const nombre = document.querySelector('input[name="nombre"]') as HTMLInputElement;
+                      const whatsapp = document.querySelector('input[name="whatsapp"]') as HTMLInputElement;
+                      const correo = document.querySelector('input[name="correo"]') as HTMLInputElement;
+
+                      if (!nombre.value || !whatsapp.value || !correo.value) {
+
+                        nombre.reportValidity();
+                        whatsapp.reportValidity();
+                        correo.reportValidity();
+
+                        return;
+                      }
+
+                      setMobileStep(2);
+                    }}
+                    className="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 rounded-xl font-semibold text-sm transition-all duration-300"
+                  >
+                    Siguiente →
+                  </button>
+                </div>
+              )}
+
+              <div className={`contents sm:contents transition-all duration-500 ${ mobileStep === 2 ? "block" : "hidden sm:contents"}`}>
+
+              {/* ENFOQUE */}
+              <div className="flex flex-col gap-1">
+
+                <label className="text-slate-700 text-[13px] font-semibold">
+                  ¿Cuál es el enfoque de tu empresa?
+                </label>
+
+                <input
+                  type="text"
+                  name="enfoque_empresa"
+                  required
+                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-[13px] text-slate-700 bg-[#f8fafc] focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100 transition"
+                />
+              </div>
+
+              
+
+              
 
               {/* CONTACTO */}
               <div className="flex flex-col gap-1">
@@ -270,23 +424,7 @@ const ContactSection = () => {
                 </select>
               </div>
 
-              {/* FECHA */}
-              <div className="flex flex-col gap-1">
-
-                <label className="text-slate-700 text-[13px] font-semibold">
-                  ¿Cuándo deseas iniciar?
-                </label>
-
-                <select
-                  name="fecha_inicio" className="w-full border border-slate-200 rounded-xl px-4 py-3 text-[13px] text-slate-600 bg-[#f8fafc] focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100 transition"
-                >
-                  <option value="">Selecciona una opción</option>
-                  <option value="inmediatamente">Inmediatamente</option>
-                  <option value="este_mes">Este mes</option>
-                  <option value="1_a_2_meses">1 a 2 meses</option>
-                  <option value="cotizando">Solo estoy cotizando</option>
-                </select>
-              </div>
+              
 
               {/* PRESUPUESTO */}
               <div className="flex flex-col gap-1">
@@ -306,34 +444,53 @@ const ContactSection = () => {
                 </select>
               </div>
             </div>
+            </div> 
+            {/* STEP 2 CONTENT */}
+            <div
+              className={`transition-all duration-500 ${
+                mobileStep === 2 ? "block opacity-100" : "hidden opacity-0 sm:block sm:opacity-100"
+              }`}
+            >
 
-            {/* MENSAJE */}
-            <div className="flex flex-col gap-1 mt-5">
+              {/* MENSAJE */}
+              <div className="flex flex-col gap-1 mt-5">
 
-              <label className="text-slate-700 text-[13px] font-semibold">
-                Cuéntanos sobre tu proyecto
-              </label>
+                <label className="text-slate-700 text-[13px] font-semibold">
+                  Cuéntanos sobre tu proyecto
+                </label>
 
-              <textarea
-                rows={4}
-                name="mensaje"
-                className="w-full border border-slate-200 rounded-xl px-4 py-3 text-[13px] text-slate-700 bg-[#f8fafc] focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100 transition resize-none"
-              />
-            </div>
+                <textarea
+                  rows={4}
+                  name="mensaje"
+                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-[13px] text-slate-700 bg-[#f8fafc] focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100 transition resize-none"
+                />
+              </div>
 
-            {/* SUBMIT */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-7">
+              {/* BOTONES */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-7">
 
-              <button
-                type="submit"
-                className="bg-gradient-to-r from-blue-500 to-blue-700 hover:scale-[1.02] active:scale-95 text-white px-7 py-3 rounded-xl font-semibold text-[13px] shadow-[0_8px_25px_rgba(59,130,246,0.25)] hover:shadow-[0_8px_35px_rgba(59,130,246,0.35)] transition-all duration-200"
-              >
-                Enviar solicitud
-              </button>
+                {/* VOLVER MOBILE */}
+                <button
+                  type="button"
+                  onClick={() => setMobileStep(1)}
+                  className="sm:hidden w-full border border-slate-300 text-slate-700 py-3 rounded-xl font-semibold text-sm"
+                >
+                  ← Volver
+                </button>
 
-              <p className="text-slate-400 text-[11px] leading-relaxed">
-                Te contactaremos lo antes posible para coordinar una reunión.
-              </p>
+                {/* ENVIAR */}
+                <button
+                  type="submit"
+                  className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-blue-700 hover:scale-[1.02] active:scale-95 text-white px-7 py-3 rounded-xl font-semibold text-[13px] shadow-[0_8px_25px_rgba(59,130,246,0.25)] hover:shadow-[0_8px_35px_rgba(59,130,246,0.35)] transition-all duration-200"
+                >
+                  Enviar solicitud
+                </button>
+
+                <p className="text-slate-400 text-[11px] leading-relaxed">
+                  Te contactaremos lo antes posible para coordinar una reunión.
+                </p>
+
+              </div>
             </div>
           </form>
         </div>

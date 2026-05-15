@@ -71,7 +71,7 @@ function PriceSection() {
   return (
     <section
       id="cotizacion"
-      className="scroll-mt-24 relative overflow-hidden bg-white px-4 py-16 text-slate-950 sm:px-6 md:py-20 lg:px-10"
+      className="scroll-mt-17 sm:scroll-mt-24 relative overflow-hidden bg-white px-4 py-16 text-slate-950 sm:px-6 md:py-20 lg:px-10"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.055),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(79,70,229,0.055),transparent_32%)]" />
       <div className="absolute left-[-180px] top-[-180px] h-[420px] w-[420px] rounded-full bg-blue-500/[0.04] blur-[120px]" />

@@ -6,7 +6,7 @@ function ProcessSection() {
   return (
     <section
       id="proceso"
-      className="scroll-mt-21 relative overflow-hidden bg-[#030918] px-4 py-16 text-white sm:px-6 md:py-20 lg:px-10"
+      className="scroll-mt-17 sm:scroll-mt-21 relative overflow-hidden bg-[#030918] px-4 py-16 text-white sm:px-6 md:py-20 lg:px-10"
     >
       {/* BACKGROUND */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(37,99,235,0.16),transparent_32%),radial-gradient(circle_at_85%_85%,rgba(37,99,235,0.12),transparent_34%)]" />

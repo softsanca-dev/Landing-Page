@@ -46,7 +46,7 @@ function ServicesSection() {
   return (
     <section
       id="servicios"
-      className="scroll-mt-24 relative overflow-hidden bg-[#f6f8fc] px-4 py-16 text-slate-950 sm:px-6 md:py-20 lg:px-10"
+      className="scroll-mt-18 sm:scroll-mt-24 relative overflow-hidden bg-[#f6f8fc] px-4 py-16 text-slate-950 sm:px-6 md:py-20 lg:px-10"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.08),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(79,70,229,0.08),transparent_30%)]" />
 

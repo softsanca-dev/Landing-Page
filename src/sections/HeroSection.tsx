@@ -1,4 +1,5 @@
 import logoImg from '../assets/logoCompleto.png';
+import logoMobile from '../assets/logoCompletoMobile.png';
 
 const HeroSection = () => {
   return (
@@ -46,7 +47,7 @@ const HeroSection = () => {
 
           {/* TITULO */}
           <div>
-            <h1 className="text-white text-4xl sm:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-[1.1]">
+            <h1 className="text-white text-3xl sm:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-[1.1]">
 
               Transformamos ideas <br />
 
@@ -60,7 +61,7 @@ const HeroSection = () => {
           {/* TEXTO */}
           <div className="flex flex-col gap-6 mt-8 lg:mt-0 items-center lg:items-start">
 
-            <div className="w-full max-w-[320px] sm:max-w-[500px] lg:max-w-[620px] h-[2px] bg-purple-600 rounded-full"></div>
+            <div className="w-full max-w-[320px] sm:max-w-[500px] lg:max-w-[620px] h-[2px] bg-blue-400 rounded-full"></div>
 
             <p className="text-slate-300 text-[15px] sm:text-base lg:text-base xl:text-lg max-w-full sm:max-w-lg lg:max-w-md xl:max-w-md leading-relaxed font-light">
 
@@ -113,7 +114,19 @@ const HeroSection = () => {
 
           <div className="absolute inset-0 bg-blue-500/10 blur-[80px] lg:blur-[100px] rounded-full scale-150"></div>
 
-          <div className="relative w-full max-w-[220px] sm:max-w-[300px] lg:max-w-[400px] xl:max-w-[480px] 2xl:max-w-[560px]">
+          {/* LOGO MOBILE */}
+          <div className="relative w-full max-w-[320px] sm:hidden">
+
+            <img
+              src={logoMobile}
+              alt="Soft SanCa IT Logo Mobile"
+              className="w-full h-auto drop-shadow-[0_0_40px_rgba(59,130,246,0.35)] brightness-110"
+            />
+
+          </div>
+
+          {/* LOGO DESKTOP */}
+          <div className="relative hidden sm:block w-full max-w-[300px] lg:max-w-[400px] xl:max-w-[480px] 2xl:max-w-[560px]">
 
             <img
               src={logoImg}
@@ -150,7 +163,46 @@ const HeroSection = () => {
 
         </p>
       </div>
+        <a
+          href="https://wa.me/573145944999?text=Hola,%20quiero%20cotizar%20un%20proyecto"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-5 right-5 z-50"
+        >
+          {/* CONTENEDOR */}
+          <div
+            className="
+              flex items-center gap-4
+              bg-[#0f172a]/95
+              backdrop-blur-md
+              rounded-full
+              transition-all duration-300
+              hover:scale-105
+            "
+          >
 
+            {/* BOTON */}
+            <div
+              className="
+                relative
+                w-[62px] h-[62px]
+                rounded-full
+                bg-gradient-to-br from-green-400 to-green-600
+                flex items-center justify-center
+              "
+            >
+
+              {/* ICONO */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 32 32"
+                className="w-8 h-8 fill-white relative z-10"
+              >
+                <path d="M19.11 17.2c-.29-.15-1.69-.83-1.95-.92-.26-.1-.45-.15-.64.15-.19.29-.73.92-.89 1.1-.16.19-.33.22-.62.08-.29-.15-1.2-.44-2.29-1.39-.84-.75-1.41-1.67-1.57-1.96-.16-.29-.02-.45.12-.59.13-.13.29-.33.44-.49.15-.16.19-.28.29-.47.1-.19.05-.36-.02-.5-.08-.15-.64-1.54-.88-2.1-.23-.56-.47-.48-.64-.49h-.54c-.19 0-.5.07-.76.36-.26.29-1 1-.99 2.43 0 1.43 1.03 2.81 1.17 3 .15.19 2.02 3.09 4.9 4.33.68.29 1.22.46 1.63.58.69.22 1.31.19 1.8.11.55-.08 1.69-.69 1.93-1.36.24-.67.24-1.25.17-1.36-.07-.11-.26-.18-.55-.33zM16.02 3C8.84 3 3 8.73 3 15.8c0 2.5.73 4.84 1.98 6.82L3 29l6.6-1.91c1.91 1.03 4.08 1.57 6.42 1.57h.01c7.18 0 13.02-5.73 13.02-12.8C29.04 8.73 23.2 3 16.02 3zm0 23.39h-.01c-2.08 0-4.12-.56-5.89-1.61l-.42-.25-3.92 1.13 1.17-3.8-.27-.39c-1.16-1.69-1.78-3.66-1.78-5.67 0-5.76 4.76-10.45 10.62-10.45 2.83 0 5.49 1.09 7.49 3.07a10.3 10.3 0 013.12 7.38c0 5.76-4.76 10.45-10.61 10.45z" />
+              </svg>
+            </div>
+          </div>
+        </a>
     </section>
   );
 };
