@@ -48,13 +48,12 @@ const HeroSection = () => {
           {/* TITULO */}
           <div>
             <h1 className="text-white text-3xl sm:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-[1.1]">
-
               Transformamos ideas <br />
 
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
                 en soluciones digitales
               </span>
-
+              
             </h1>
           </div>
 
