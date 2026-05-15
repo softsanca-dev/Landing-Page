@@ -53,7 +53,7 @@ function Footer() {
                 Soft SanCa IT
               </span>
 
-              <h2 className="mt-6 max-w-xl text-3xl font-black leading-[1.05] tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              <h2 className="mt-6 py-[30px] max-w-xl text-3xl font-black leading-[1.05] tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
                 Construyamos algo increíble juntos.
               </h2>
 

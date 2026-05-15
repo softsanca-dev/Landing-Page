@@ -248,19 +248,7 @@ const Navbar = () => {
                       </motion.a>
                     );
                   })}
-                </div>
-
-                <a
-                  href="https://wa.me/573145944999?text=Hola,%20quiero%20cotizar%20un%20proyecto"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group mt-5 inline-flex w-full items-center justify-center gap-3 rounded-[1.35rem] border border-blue-400/20 bg-white px-5 py-4 text-sm font-black text-slate-950 shadow-[0_18px_50px_rgba(37,99,235,0.22)] transition-all duration-300 active:scale-[0.98]"
-                >
-                  Hablemos por WhatsApp
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-white transition group-hover:translate-x-1">
-                    <ArrowUpRight size={16} />
-                  </span>
-                </a>
+                </div> 
               </div>
             </motion.div>
           </motion.div>
